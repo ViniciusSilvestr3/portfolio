@@ -302,6 +302,26 @@
         .techlabel {
             position: relative;
         }
+
+        .glow-on {
+            text-shadow: 0 0 10px #fff, 0 0 20px #0ff, 0 0 30px #0ff;
+            transition: text-shadow 0.5s ease;
+        }
+       @keyframes glow {
+  0% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #00f, 0 0 15px #0ff;
+  }
+  50% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #00f, 0 0 30px #0ff;
+  }
+  100% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #00f, 0 0 15px #0ff;
+  }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
     </style>
 </head>
 
@@ -323,12 +343,12 @@
     <section class="flex items-center justify-center min-h-screen">
         <div class="text-center max-w-4xl mx-auto px-4">
             <h1
-                class="text-4xl md:text-6xl lg:text-7xl font-black mb-2 tracking-tighter leading-none text-shadow-glow-subtle">
+                class="text-4xl md:text-6xl lg:text-7xl font-black mb-2 tracking-tighter leading-none text-shadow-glow-subtle" id="glowText">
                 Vinicius <span class="font-roboto font-normal">Silvestre</span>
             </h1>
             <p class="text-xl md:text-2xl font-semibold mb-8">
                 <span class="text-gray-600 dark:text-[#C9C9C9]">Desenvolvedor & </span>
-                <span class="bg-gradient-to-r from-[#9C83FF] to-[#FF9051] text-transparent bg-clip-text">Designer</span>
+                <span class="bg-gradient-to-r from-[#9C83FF] to-[#FF9051] text-transparent bg-clip-text animate-glow">Designer</span>
             </p>
 
             <!-- Buttons -->
@@ -665,6 +685,15 @@
 
         // Call the function to create project tiles
         createProjectTiles();
+        const title = document.getElementById('glowText');
+
+            title.addEventListener('mouseenter', () => {
+                title.classList.add('glow-on');
+            });
+
+            title.addEventListener('mouseleave', () => {
+                title.classList.remove('glow-on');
+            });
 
 
     </script>
