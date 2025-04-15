@@ -22,10 +22,11 @@
         @import url('https://fonts.googleapis.com/css2?family=Bona+Nova:ital,wght@0,400;0,700;1,400&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 
-        #themetoggle{
+        #themetoggle {
             position: fixed;
             right: 24px;
         }
+
         .text-shadow-glow-subtle {
             text-shadow: 0 0 12px rgba(255, 255, 255, 0.419);
         }
@@ -287,8 +288,20 @@
         .dark .repo-action:hover {
             color: #e2e8f0;
         }
-        
 
+        .techlabel:hover::after {
+            content: attr(data-text);
+            opacity: 1;
+            position: absolute;
+            margin: 0 auto;
+            margin-top: 1rem;
+            font-family: 'Roboto', serif;
+            font-style: italic;
+        }
+
+        .techlabel {
+            position: relative;
+        }
     </style>
 </head>
 
@@ -377,33 +390,65 @@
         <div class="container mx-auto px-8 sm:px-16">
             <h2 class="text-3xl font-bold mb-16 text-center font-space-mono">Meus conhecimentos </h2>
             <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-12 place-items-center">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-plain.svg"
-                    class="tech-icon" title="Figma" alt="Figma" />
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain.svg"
-                    class="tech-icon" title="HTML5" alt="HTML5" />
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-plain.svg"
-                    class="tech-icon" title="CSS3" alt="CSS3" />
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-plain.svg"
-                    class="tech-icon" title="C++" alt="C++" />
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-plain.svg"
-                    class="tech-icon" title="Photoshop" alt="Photoshop" />
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
-                    class="tech-icon" title="React" alt="React" />
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg"
-                    class="tech-icon" title="JavaScript" alt="JavaScript" />
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-plain.svg"
-                    class="tech-icon" title="Linux" alt="Linux" />
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-plain.svg"
-                    class="tech-icon" title="Bash" alt="Bash" />
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-plain.svg"
-                    class="tech-icon" title="Postgresql" alt="Póstgresql" />
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
-                    class="tech-icon" title="TailWind" alt="Tailwind" />
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-plain.svg"
-                    class="tech-icon" title="NextJs" alt="NextJs" />
+                <div class="techlabel" data-text="Figma">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-plain.svg"
+                        class="tech-icon figma" title="Figma" alt="Figma" />
+                </div>
+                <div class="techlabel" data-text="HTML5">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain.svg"
+                        class="tech-icon" title="HTML5" alt="HTML5" />
+                </div>
+                <div class="techlabel" data-text="CSS3">
 
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-plain.svg"
+                        class="tech-icon" title="CSS3" alt="CSS3" />
+                </div>
+                <div class="techlabel" data-text="C++">
+
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-plain.svg"
+                        class="tech-icon" title="C++" alt="C++" />
+                </div>
+                <div class="techlabel" data-text="Photoshop">
+
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-plain.svg"
+                        class="tech-icon" title="Photoshop" alt="Photoshop" />
+                </div>
+                <div class="techlabel" data-text="React">
+
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+                        class="tech-icon" title="React" alt="React" />
+                </div>
+                <div class="techlabel" data-text="JavaScript">
+
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg"
+                        class="tech-icon" title="JavaScript" alt="JavaScript" />
+                </div>
+                <div class="techlabel" data-text="Linux">
+
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-plain.svg"
+                        class="tech-icon" title="Linux" alt="Linux" />
+                </div>
+                <div class="techlabel" data-text="Bash">
+
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-plain.svg"
+                        class="tech-icon" title="Bash" alt="Bash" />
+                </div>
+                <div class="techlabel" data-text="Postgresql">
+
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-plain.svg"
+                        class="tech-icon" title="Postgresql" alt="Postgresql" />
+                </div>
+                <div class="techlabel" data-text="TailWind">
+
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
+                        class="tech-icon" title="TailWind" alt="Tailwind" />
+                </div>
+                <div class="techlabel" data-text="NextJs">
+
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-plain.svg"
+                        class="tech-icon" title="NextJs" alt="NextJs" />
+                </div>
             </div>
-        </div>
     </section>
 
     <!-- Navigation Links Section -->
@@ -413,7 +458,7 @@
             <nav class="nav-container">
                 <a href="https://github.com/ViniciusSilvestr3"
                     class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold" target="_blank">
-                    <i data-lucide="github" class="w-6 h-6" ></i>
+                    <i data-lucide="github" class="w-6 h-6"></i>
                     Github
                 </a>
                 <a href="https://www.linkedin.com/in/vinicius-silvestre-a737a9239/"
@@ -421,12 +466,12 @@
                     <i data-lucide="linkedin" class="w-6 h-6"></i>
                     LinkedIn
                 </a>
-                <a href="https://www.instagram.com/vinicius.silver98/" 
+                <a href="https://www.instagram.com/vinicius.silver98/"
                     class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">
                     <i data-lucide="instagram" class="w-6 h-6" target="_blank"></i>
                     Instagram
                 </a>
-                <a href="mailto:viniciusilvestre98@gmail.com" 
+                <a href="mailto:viniciusilvestre98@gmail.com"
                     class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">
                     <i data-lucide="mail" class="w-6 h-6" target="_blank"></i>
                     Contato
@@ -621,7 +666,6 @@
         // Call the function to create project tiles
         createProjectTiles();
 
+
     </script>
 </body>
-
-</html>
