@@ -199,7 +199,7 @@
             }
         }
 
-        .fatec-hover:hover {
+        .fatec-hover {
             color: #147eff;
         }
 
@@ -343,12 +343,12 @@
     <section class="flex items-center justify-center min-h-screen">
         <div class="text-center max-w-4xl mx-auto px-4">
             <h1
-                class="text-4xl md:text-6xl lg:text-7xl font-black mb-2 tracking-tighter leading-none text-shadow-glow-subtle" id="glowText">
-                Vinicius <span class="font-roboto font-normal">Silvestre</span>
+                class=" text-4xl md:text-6xl lg:text-7xl font-black mb-2 tracking-tighter leading-none text-shadow-glow-subtle" id="glowText">
+                Vinicius <span >Silvestre</span>
             </h1>
-            <p class="text-xl md:text-2xl font-semibold mb-8">
-                <span class="text-gray-600 dark:text-[#C9C9C9]">Desenvolvedor & </span>
-                <span class="bg-clip-text animate-glow">Designer</span>
+            <p class="text-xl md:text-2xl font-space-mono mb-8">
+                <span class="text-gray-600 dark:text-[#C9C9C9] ">Desenvolvedor & </span>
+                <span class="bg-clip-text animate-glow font-roboto">Designer</span>
             </p>
 
             <!-- Buttons -->
@@ -373,27 +373,27 @@
 
     <!-- Seção sobre mim -->
     <section id="about" class="section py-20 bg-gray-100 dark:bg-gray-900">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-8 text-center font-garamond">Sobre mim</h2>
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-8 text-center font-space-mono left">Sobre mim</h2>
             <div
                 class="flex flex-col md:flex-row items-center md:items-start justify-center space-y-8 md:space-y-0 md:space-x-12">
                 <div class="squircle bg-gray-300 dark:bg-gray-700 flex-shrink-0">
                     <img src="./imgs/perfil.jpg" alt="Vinicius Silvestre criança segurando uma guitarra"
                         class="w-full h-full object-cover" />
                 </div>
-                <div class="max-w-2xl text-center md:text-left">
+                <div class="max-w-2xl text-center md:text-center">
                     <p class="about-text font-space-mono">
                         Olá! 👋 Me chamo Vinicius Silvestre, sou estudante de desenvolvimento e design UX/UI. Estou em
-                        formação no curso de <u><a class="fatec-hover" href="https://fatecrl.edu.br/cursos/sistemas-para-internet" target="_blank">Sistemas para a
-                            Internet (esse link abrirá em outra guia)</a></u> na
-                        <u><a class="fatec-hover" href="https://www.fatecrl.edu.br/" target="_blank">FATEC Rubens Lara (esse link abrirá em outra
-                            guia)</a>.</u>
+                        formação no curso de <u><a class="fatec-hover" href="https://fatecrl.edu.br/cursos/sistemas-para-internet" alt="Link para o curso de Sistemas para Internet esse link abrirá em outra guia" target="_blank">Sistemas para a
+                            Internet</a></u> na
+                        <u><a class="fatec-hover" href="https://www.fatecrl.edu.br/" alt="Link para o site da faculdade esse link abrirá em outra guia" target="_blank">FATEC Rubens Lara 
+                           </a>.</u>
                         Também tenho interesse grande na área de redes e segurança digital e conclui diversos cursos da
                         Cisco. Tenho certificações em HTML, CSS, JavaScript e React pela Origamid Cursos.
                     </p>
                     <br>
                     <p class="about-text font-space-mono">
-                        Sou apaixonado por arte no geral, faço músicas autorais amo cinema,
+                        Sou apaixonado por arte no geral, faço músicas autorais e amo cinema,
                         um prazer te receber aqui!
                     </p>
                     <br>
@@ -403,6 +403,32 @@
                     </p>
                 </div>
             </div>
+        </div>
+    </section>
+    <section id="links" class="section py-16">
+        <div class="container mx-auto px-16">
+            <nav class="nav-container">
+                <a href="https://github.com/ViniciusSilvestr3"
+                    class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold" target="_blank">
+                    <i data-lucide="github" class="w-6 h-6"></i>
+                    Github
+                </a>
+                <a href="https://www.linkedin.com/in/vinicius-silvestre-a737a9239/"
+                    class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold" target="_blank">
+                    <i data-lucide="linkedin" class="w-6 h-6"></i>
+                    LinkedIn
+                </a>
+                <a href="https://www.instagram.com/vinicius.silver98/"
+                    class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">
+                    <i data-lucide="instagram" class="w-6 h-6" target="_blank"></i>
+                    Instagram
+                </a>
+                <a href="mailto:viniciusilvestre98@gmail.com"
+                    class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">
+                    <i data-lucide="mail" class="w-6 h-6" target="_blank"></i>
+                    E-mail
+                </a>
+            </nav>
         </div>
     </section>
 
@@ -473,33 +499,7 @@
     </section>
 
     <!-- Navigation Links Section -->
-    <section id="links" class="section py-16">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-16 text-center font-space-mono">Minhas redes</h2>
-            <nav class="nav-container">
-                <a href="https://github.com/ViniciusSilvestr3"
-                    class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold" target="_blank">
-                    <i data-lucide="github" class="w-6 h-6"></i>
-                    Github
-                </a>
-                <a href="https://www.linkedin.com/in/vinicius-silvestre-a737a9239/"
-                    class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold" target="_blank">
-                    <i data-lucide="linkedin" class="w-6 h-6"></i>
-                    LinkedIn
-                </a>
-                <a href="https://www.instagram.com/vinicius.silver98/"
-                    class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">
-                    <i data-lucide="instagram" class="w-6 h-6" target="_blank"></i>
-                    Instagram
-                </a>
-                <a href="mailto:viniciusilvestre98@gmail.com"
-                    class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">
-                    <i data-lucide="mail" class="w-6 h-6" target="_blank"></i>
-                    Contato
-                </a>
-            </nav>
-        </div>
-    </section>
+   
 
     <!-- Seção de Projetos -->
     <section id="projects" class="section py-20 bg-gray-100 dark:bg-gray-900">
@@ -512,8 +512,8 @@
     </section>
 
 </main>
-<footer class="w-full py-4 border-t border-gray-300 dark:border-gray-700">
-    <a class="text-center font-space-mono text-sm uppercase cursor-pointer footer-text text-center"
+<footer class="w-full py-4 border-t border-gray-300 dark:border-gray-700 footer-text text-center">
+    <a class="text-center font-space-mono text-sm uppercase cursor-pointer "
         href="https://www.youtube.com/watch?v=tN-9bfbCAAc&ab_channel=TOMITO">
         Melhor OST dos jogos.
     </a>
