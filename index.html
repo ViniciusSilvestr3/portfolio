@@ -71,7 +71,7 @@
         }
 
         .tech-icon {
-            filter: invert(0.4);
+            filter: invert(40%);
         }
 
         .tech-icon:hover {
@@ -80,12 +80,16 @@
         }
 
         .dark .tech-icon:hover {
-            filter: invert(1);
+            filter: invert(0);
             transform: scale(1.5);
         }
 
         .dark .tech-icon:hover {
-            filter: invert(0.2);
+            filter: invert(0);
+        }
+
+        .dark .tech-dark:hover{
+            filter: invert(100%)
         }
 
 
@@ -307,21 +311,24 @@
             text-shadow: 0 0 10px #fff, 0 0 20px #0ff, 0 0 30px #0ff;
             transition: text-shadow 0.5s ease;
         }
-       @keyframes glow {
-  0% {
-    text-shadow: 0 0 5px #fff, 0 0 10px #00f, 0 0 15px #0ff;
-  }
-  50% {
-    text-shadow: 0 0 10px #fff, 0 0 20px #00f, 0 0 30px #0ff;
-  }
-  100% {
-    text-shadow: 0 0 5px #fff, 0 0 10px #00f, 0 0 15px #0ff;
-  }
-}
 
-.animate-glow {
-  animation: glow 2s ease-in-out infinite;
-}
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 5px #fff, 0 0 10px #00f, 0 0 15px #0ff;
+            }
+
+            50% {
+                text-shadow: 0 0 10px #fff, 0 0 20px #00f, 0 0 30px #0ff;
+            }
+
+            100% {
+                text-shadow: 0 0 5px #fff, 0 0 10px #00f, 0 0 15px #0ff;
+            }
+        }
+
+        .animate-glow {
+            animation: glow 2s ease-in-out infinite;
+        }
     </style>
 </head>
 
@@ -342,9 +349,9 @@
     <!-- Apresentação do nome -->
     <section class="flex items-center justify-center min-h-screen">
         <div class="text-center max-w-4xl mx-auto px-4">
-            <h1
-                class=" text-4xl md:text-6xl lg:text-7xl font-black mb-2 tracking-tighter leading-none text-shadow-glow-subtle" id="glowText">
-                Vinicius <span >Silvestre</span>
+            <h1 class=" text-4xl md:text-6xl lg:text-7xl font-black mb-2 tracking-tighter leading-none text-shadow-glow-subtle"
+                id="glowText">
+                Vinicius <span>Silvestre</span>
             </h1>
             <p class="text-xl md:text-2xl font-space-mono mb-8">
                 <span class="text-gray-600 dark:text-[#C9C9C9] ">Desenvolvedor & </span>
@@ -384,10 +391,15 @@
                 <div class="max-w-2xl text-center md:text-center">
                     <p class="about-text font-space-mono">
                         Olá! 👋 Me chamo Vinicius Silvestre, sou estudante de desenvolvimento e design UX/UI. Estou em
-                        formação no curso de <u><a class="fatec-hover" href="https://fatecrl.edu.br/cursos/sistemas-para-internet" alt="Link para o curso de Sistemas para Internet esse link abrirá em outra guia" target="_blank">Sistemas para a
-                            Internet</a></u> na
-                        <u><a class="fatec-hover" href="https://www.fatecrl.edu.br/" alt="Link para o site da faculdade esse link abrirá em outra guia" target="_blank">FATEC Rubens Lara 
-                           </a>.</u>
+                        formação no curso de <u><a class="fatec-hover"
+                                href="https://fatecrl.edu.br/cursos/sistemas-para-internet"
+                                alt="Link para o curso de Sistemas para Internet esse link abrirá em outra guia"
+                                target="_blank">Sistemas para a
+                                Internet</a></u> na
+                        <u><a class="fatec-hover" href="https://www.fatecrl.edu.br/"
+                                alt="Link para o site da faculdade esse link abrirá em outra guia" target="_blank">FATEC
+                                Rubens Lara
+                            </a>.</u>
                         Também tenho interesse grande na área de redes e segurança digital e conclui diversos cursos da
                         Cisco. Tenho certificações em HTML, CSS, JavaScript e React pela Origamid Cursos.
                     </p>
@@ -439,7 +451,7 @@
             <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-12 place-items-center">
                 <div class="techlabel" data-text="Figma">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-plain.svg"
-                        class="tech-icon figma" title="Figma" alt="Figma" />
+                        class="tech-icon figma tech-dark" title="Figma" alt="Figma" />
                 </div>
                 <div class="techlabel" data-text="HTML5">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain.svg"
@@ -473,7 +485,7 @@
                 <div class="techlabel" data-text="Linux">
 
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-plain.svg"
-                        class="tech-icon" title="Linux" alt="Linux" />
+                        class="tech-icon tech-dark" title="Linux" alt="Linux" />
                 </div>
                 <div class="techlabel" data-text="Bash">
 
@@ -499,7 +511,7 @@
     </section>
 
     <!-- Navigation Links Section -->
-   
+
 
     <!-- Seção de Projetos -->
     <section id="projects" class="section py-20 bg-gray-100 dark:bg-gray-900">
@@ -688,13 +700,13 @@
         createProjectTiles();
         const title = document.getElementById('glowText');
 
-            title.addEventListener('mouseenter', () => {
-                title.classList.add('glow-on');
-            });
+        title.addEventListener('mouseenter', () => {
+            title.classList.add('glow-on');
+        });
 
-            title.addEventListener('mouseleave', () => {
-                title.classList.remove('glow-on');
-            });
+        title.addEventListener('mouseleave', () => {
+            title.classList.remove('glow-on');
+        });
 
 
     </script>
