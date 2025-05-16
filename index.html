@@ -1,671 +1,781 @@
 <head>
-    <meta charset="UTF-8" lang="pt-br">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vinicius Silvestre - Portfolio</title>
-    <link rel="icon" href="assets/dp.jpeg" type="image/jpeg">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        dark: "#0a0a0a",
-                        light: "#fcfbf7",
-                    },
-                },
-            },
-        }
-    </script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Bona+Nova:ital,wght@0,400;0,700;1,400&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+  <meta charset="UTF-8" lang="pt-br" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vinicius Silvestre - Portfolio</title>
+  <link rel="icon" href="assets/dp.jpeg" type="image/jpeg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            dark: "#0a0a0a",
+            light: "#fcfbf7",
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Bona+Nova:ital,wght@0,400;0,700;1,400&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
+    #themetoggle {
+      position: fixed;
+      right: 24px;
+    }
 
-        #themetoggle {
-            position: fixed;
-            right: 24px;
-        }
+    .text-shadow-glow-subtle {
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.419);
+    }
 
-        .text-shadow-glow-subtle {
-            text-shadow: 0 0 12px rgba(255, 255, 255, 0.419);
-        }
+    .font-roboto {
+      font-family: "Roboto", serif;
+      font-style: italic;
+    }
 
-        .font-roboto {
-            font-family: 'Roboto', serif;
-            font-style: italic;
-        }
+    .nav-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
 
-        .nav-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-        }
+    @media (min-width: 640px) {
+      .nav-container {
+        gap: 2rem;
+      }
+    }
 
-        @media (min-width: 640px) {
-            .nav-container {
-                gap: 2rem;
-            }
-        }
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s ease;
+    }
 
-        .nav-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: color 0.3s ease;
-        }
+    .nav-link:hover {
+      color: #000000;
+    }
 
-        .nav-link:hover {
-            color: #000000;
-        }
+    .dark .nav-link:hover {
+      color: #ffffff;
+    }
 
-        .dark .nav-link:hover {
-            color: #ffffff;
-        }
+    .tech-icon {
+      width: 64px;
+      height: 64px;
+      transition: filter 0.3s ease, transform 0.3s ease;
+    }
 
-        .tech-icon {
-            width: 64px;
-            height: 64px;
-            transition: filter 0.3s ease, transform 0.3s ease;
-        }
+    .tech-icon {
+      filter: invert(40%);
+    }
 
-        .tech-icon {
-            filter: invert(40%);
-        }
+    .tech-icon:hover {
+      filter: invert(0);
+      transform: scale(1.5);
+    }
 
-        .tech-icon:hover {
-            filter: invert(0);
-            transform: scale(1.5);
-        }
+    .dark .tech-icon:hover {
+      filter: invert(0);
+      transform: scale(1.5);
+    }
 
-        .dark .tech-icon:hover {
-            filter: invert(0);
-            transform: scale(1.5);
-        }
+    .dark .tech-icon:hover {
+      filter: invert(0);
+    }
 
-        .dark .tech-icon:hover {
-            filter: invert(0);
-        }
+    .dark .tech-dark:hover {
+      filter: invert(100%);
+    }
 
-        .dark .tech-dark:hover{
-            filter: invert(100%)
-        }
+    .squircle {
+      width: 256px;
+      height: 260px;
+      border-radius: 100%;
+      overflow: hidden;
+    }
 
+    .section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
 
-        .squircle {
-            width: 256px;
-            height: 260px;
-            border-radius: 100%;
-            overflow: hidden;
-        }
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-        .section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
+    @media (min-width: 740px) {
+      .nav-container {
+        display: grid;
+        grid-template-columns: repeat(6, auto);
+        justify-content: center;
+        gap: 2rem;
+      }
 
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+      .squircle {
+        width: 260px;
+        height: 260px;
+      }
+    }
 
-        @media (min-width: 740px) {
-            .nav-container {
-                display: grid;
-                grid-template-columns: repeat(6, auto);
-                justify-content: center;
-                gap: 2rem;
-            }
+    .font-space-mono {
+      font-family: "Space Mono", monospace;
+    }
 
-            .squircle {
-                width: 260px;
-                height: 260px;
-            }
-        }
+    .footer-text {
+      transition: letter-spacing 0.8s ease;
+    }
 
-        .font-space-mono {
-            font-family: 'Space Mono', monospace;
-        }
+    .footer-text:hover {
+      letter-spacing: 4px;
+    }
 
-        .footer-text {
-            transition: letter-spacing 0.8s ease;
-        }
+    .button {
+      font-size: 17px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 980px;
+      transition: all 0.3s ease;
+    }
 
-        .footer-text:hover {
-            letter-spacing: 4px;
-        }
+    .button-filled {
+      background-color: #ff8c00;
+      color: #000000;
+    }
 
-        .button {
-            font-size: 17px;
-            font-weight: 600;
-            padding: 8px 16px;
-            border-radius: 980px;
-            transition: all 0.3s ease;
-        }
+    .button-filled:hover {
+      transform: scale(1.15);
+    }
 
-        .button-filled {
-            background-color: #ff8c00;
-            color: #000000;
-        }
+    .button-outlined {
+      background-color: #007aff;
+      border: 2px solid #007aff;
+      color: #ffffff;
+    }
 
-        .button-filled:hover {
-            transform: scale(1.15);
-        }
+    .button-outlined:hover {
+      transform: scale(1.15);
+    }
 
-        .button-outlined {
-            background-color: #007AFF;
-            border: 2px solid #007AFF;
-            color: #FFFFFF;
-        }
+    .chevron-down {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+    }
 
-        .button-outlined:hover {
-            transform: scale(1.15);
-        }
+    @keyframes bounce {
+      0%,
+      20%,
+      50%,
+      80%,
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
 
-        .chevron-down {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-        }
+      40% {
+        transform: translateX(-50%) translateY(-20px);
+      }
 
-        @keyframes bounce {
+      60% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+    }
 
-            0%,
-            20%,
-            50%,
-            80%,
-            100% {
-                transform: translateX(-50%) translateY(0);
-            }
+    .about-text {
+      font-size: 15px;
+      /* Default size for mobile */
+    }
 
-            40% {
-                transform: translateX(-50%) translateY(-20px);
-            }
+    @media (min-width: 768px) {
+      .about-text {
+        font-size: 19px;
+        /* Larger size for desktop */
+      }
+    }
 
-            60% {
-                transform: translateX(-50%) translateY(-10px);
-            }
-        }
+    .fatec-hover {
+      color: #147eff;
+    }
 
-        .about-text {
-            font-size: 15px;
-            /* Default size for mobile */
-        }
+    .project-thumbnail {
+      position: relative;
+      overflow: hidden;
+      border-radius: 0.5rem;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      aspect-ratio: 2 / 1;
+    }
 
-        @media (min-width: 768px) {
-            .about-text {
-                font-size: 19px;
-                /* Larger size for desktop */
-            }
-        }
+    .project-thumbnail:hover {
+      transform: scale(1.05);
+    }
 
-        .fatec-hover {
-            color: #147eff;
-        }
+    .project-thumbnail:hover .redirect-icon {
+      opacity: 1;
+    }
 
+    .redirect-icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
 
-        .project-thumbnail {
-            position: relative;
-            overflow: hidden;
-            border-radius: 0.5rem;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-            aspect-ratio: 2 / 1;
-        }
+    .redirect-icon svg {
+      color: white;
+      width: 2rem;
+      height: 2rem;
+    }
 
-        .project-thumbnail:hover {
-            transform: scale(1.05);
-        }
+    .read-more {
+      font-family: "Space Mono", monospace;
+      text-transform: uppercase;
+      text-decoration: underline;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
 
-        .project-thumbnail:hover .redirect-icon {
-            opacity: 1;
-        }
+    @media (max-width: 640px) {
+      .projects-container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
 
-        .redirect-icon {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
+      .project-tile {
+        margin-bottom: 1rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+      }
+    }
 
-        .redirect-icon svg {
-            color: white;
-            width: 2rem;
-            height: 2rem;
-        }
+    .repo-actions {
+      display: flex;
+      justify-content: flex-start;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
 
-        .read-more {
-            font-family: 'Space Mono', monospace;
-            text-transform: uppercase;
-            text-decoration: underline;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-        }
+    .repo-action {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.875rem;
+      color: #718096;
+      transition: color 0.3s ease;
+    }
 
-        @media (max-width: 640px) {
-            .projects-container {
-                padding-left: 2rem;
-                padding-right: 2rem;
-            }
+    .repo-action:hover {
+      color: #2d3748;
+    }
 
-            .project-tile {
-                margin-bottom: 1rem;
-                margin-left: 1rem;
-                margin-right: 1rem;
+    .dark .repo-action:hover {
+      color: #e2e8f0;
+    }
 
-            }
-        }
+    .techlabel:hover::after {
+      content: attr(data-text);
+      opacity: 1;
+      position: absolute;
+      margin: 0 auto;
+      margin-top: 1rem;
+      font-family: "Roboto", serif;
+      font-style: italic;
+    }
 
-        .repo-actions {
-            display: flex;
-            justify-content: flex-start;
-            gap: 1rem;
-            margin-top: 0.5rem;
-        }
+    .techlabel {
+      position: relative;
+    }
 
-        .repo-action {
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-            font-size: 0.875rem;
-            color: #718096;
-            transition: color 0.3s ease;
-        }
+    .glow-on {
+      text-shadow: 0 0 10px #fff, 0 0 20px #0ff, 0 0 30px #0ff;
+      transition: text-shadow 0.5s ease;
+    }
 
-        .repo-action:hover {
-            color: #2d3748;
-        }
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 5px #fff, 0 0 10px #00f, 0 0 15px #0ff;
+      }
 
-        .dark .repo-action:hover {
-            color: #e2e8f0;
-        }
+      50% {
+        text-shadow: 0 0 10px #fff, 0 0 20px #00f, 0 0 30px #0ff;
+      }
 
-        .techlabel:hover::after {
-            content: attr(data-text);
-            opacity: 1;
-            position: absolute;
-            margin: 0 auto;
-            margin-top: 1rem;
-            font-family: 'Roboto', serif;
-            font-style: italic;
-        }
+      100% {
+        text-shadow: 0 0 5px #fff, 0 0 10px #00f, 0 0 15px #0ff;
+      }
+    }
 
-        .techlabel {
-            position: relative;
-        }
-
-        .glow-on {
-            text-shadow: 0 0 10px #fff, 0 0 20px #0ff, 0 0 30px #0ff;
-            transition: text-shadow 0.5s ease;
-        }
-
-        @keyframes glow {
-            0% {
-                text-shadow: 0 0 5px #fff, 0 0 10px #00f, 0 0 15px #0ff;
-            }
-
-            50% {
-                text-shadow: 0 0 10px #fff, 0 0 20px #00f, 0 0 30px #0ff;
-            }
-
-            100% {
-                text-shadow: 0 0 5px #fff, 0 0 10px #00f, 0 0 15px #0ff;
-            }
-        }
-
-        .animate-glow {
-            animation: glow 2s ease-in-out infinite;
-        }
-    </style>
+    .animate-glow {
+      animation: glow 2s ease-in-out infinite;
+    }
+  </style>
 </head>
 
 <body
-    class="bg-light dark:bg-dark text-dark dark:text-white min-h-screen flex flex-col font-['Inter'] transition-colors duration-300">
-</body>
+  class="bg-light dark:bg-dark text-dark dark:text-white min-h-screen flex flex-col font-['Inter'] transition-colors duration-300"
+></body>
 <div class="absolute top-8 right-8 z-10">
-    <button id="themeToggle"
-        class="p-2 rounded-lg bg-dark dark:bg-light text-light dark:text-dark w-10 h-10 flex items-center justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-        </svg>
-    </button>
+  <button
+    id="themeToggle"
+    class="p-2 rounded-lg bg-dark dark:bg-light text-light dark:text-dark w-10 h-10 flex items-center justify-center"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      class="w-6 h-6"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+      />
+    </svg>
+  </button>
 </div>
 
 <main class="flex-grow flex flex-col">
-    <!-- Apresentação do nome -->
-    <section class="flex items-center justify-center min-h-screen">
-        <div class="text-center max-w-4xl mx-auto px-4">
-            <h1 class=" text-4xl md:text-6xl lg:text-7xl font-black mb-2 tracking-tighter leading-none text-shadow-glow-subtle"
-                id="glowText">
-                Vinicius <span>Silvestre</span>
-            </h1>
-            <p class="text-xl md:text-2xl font-space-mono mb-8">
-                <span class="text-gray-600 dark:text-[#C9C9C9] ">Desenvolvedor & </span>
-                <span class="bg-clip-text animate-glow font-roboto">Designer</span>
-            </p>
+  <!-- Apresentação do nome -->
+  <section class="flex items-center justify-center min-h-screen">
+    <div class="text-center max-w-4xl mx-auto px-4">
+      <h1
+        class="text-4xl md:text-6xl lg:text-7xl font-black mb-2 tracking-tighter leading-none text-shadow-glow-subtle"
+        id="glowText"
+      >
+        Vinicius <span>Silvestre</span>
+      </h1>
+      <p class="text-xl md:text-2xl font-space-mono mb-8">
+        <span class="text-gray-600 dark:text-[#C9C9C9]">Desenvolvedor & </span>
+        <span class="bg-clip-text animate-glow font-roboto">Designer</span>
+      </p>
 
-            <!-- Buttons -->
-            <div class="flex justify-center space-x-4 mb-12">
-                <a href="https://github.com/ViniciusSilvestr3" class="button button-filled flex items-center space-x-2"
-                    target="_blank">
-                    <span>GitHub</span>
-                    <i data-lucide="github" class="w-5 h-5"></i>
-                </a>
-                <a href="mailto:viniciusilvestre98@gmail.com" class="button button-outlined flex items-center space-x-2"
-                    target="_blank">
-                    <span>Entre em Contato</span>
-                    <i data-lucide="mail" class="w-5 h-5"></i>
-                </a>
-            </div>
+      <!-- Buttons -->
+      <div class="flex justify-center space-x-4 mb-12">
+        <a
+          href="https://github.com/ViniciusSilvestr3"
+          class="button button-filled flex items-center space-x-2"
+          target="_blank"
+        >
+          <span>GitHub</span>
+          <i data-lucide="github" class="w-5 h-5"></i>
+        </a>
+        <a
+          href="mailto:viniciusilvestre98@gmail.com"
+          class="button button-outlined flex items-center space-x-2"
+          target="_blank"
+        >
+          <span>Entre em Contato</span>
+          <i data-lucide="mail" class="w-5 h-5"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="chevron-down">
+      <a href="#about"><i data-lucide="chevron-down" class="w-8 h-8"></i></a>
+    </div>
+  </section>
+
+  <!-- Seção sobre mim -->
+  <section id="about" class="section py-20 bg-gray-100 dark:bg-gray-900">
+    <div class="container mx-auto px-6">
+      <div
+        class="flex flex-col md:flex-row items-center md:items-start justify-center space-y-8 md:space-y-0 md:space-x-12"
+      >
+        <div class="squircle bg-gray-300 dark:bg-gray-700 flex-shrink-0">
+          <img
+            src="./imgs/perfil.jpg"
+            alt="Vinicius Silvestre criança segurando uma guitarra"
+            class="w-full h-full object-cover"
+          />
         </div>
+        <div class="max-w-2xl text-center md:text-center">
+          <h2 class="text-3xl font-bold mb-8 text-center font-space-mono">
+            Sobre mim
+          </h2>
 
-        <div class="chevron-down">
-            <a href="#about"><i data-lucide="chevron-down" class="w-8 h-8"></i></a>
+          <p class="about-text font-space-mono">
+            Olá! 👋 Me chamo Vinicius Silvestre, sou estudante de
+            desenvolvimento e design UX/UI. Estou em formação no curso de
+            <u
+              ><a
+                class="fatec-hover"
+                href="https://fatecrl.edu.br/cursos/sistemas-para-internet"
+                alt="Link para o curso de Sistemas para Internet esse link abrirá em outra guia"
+                target="_blank"
+                >Sistemas para a Internet</a
+              ></u
+            >
+            na
+            <u
+              ><a
+                class="fatec-hover"
+                href="https://www.fatecrl.edu.br/"
+                alt="Link para o site da faculdade esse link abrirá em outra guia"
+                target="_blank"
+                >FATEC Rubens Lara </a
+              >.</u
+            >
+            Também tenho interesse grande na área de redes e segurança digital e
+            conclui diversos cursos da Cisco. Tenho certificações em HTML, CSS,
+            JavaScript e React pela Origamid Cursos.
+          </p>
+          <br />
+          <p class="about-text font-space-mono">
+            Sou apaixonado por arte no geral, faço músicas autorais e amo
+            cinema, um prazer te receber aqui!
+          </p>
+          <br />
+          <p class="about-text interests-container">
+            <span
+              ><span class="font-bold">Interesses: </span> Música, Cinemas &
+              História em Quadrinhos</span
+            >
+          </p>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
+  <section id="links" class="section py-16">
+    <div class="container mx-auto px-16">
+      <nav class="nav-container">
+        <a
+          href="https://github.com/ViniciusSilvestr3"
+          class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold"
+          target="_blank"
+        >
+          <i data-lucide="github" class="w-6 h-6"></i>
+          Github
+        </a>
+        <a
+          href="https://www.linkedin.com/in/vinicius-silvestre-a737a9239/"
+          class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold"
+          target="_blank"
+        >
+          <i data-lucide="linkedin" class="w-6 h-6"></i>
+          LinkedIn
+        </a>
+        <a
+          href="https://www.instagram.com/vinicius.silver98/"
+          class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold"
+        >
+          <i data-lucide="instagram" class="w-6 h-6" target="_blank"></i>
+          Instagram
+        </a>
+        <a
+          href="mailto:viniciusilvestre98@gmail.com"
+          class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold"
+        >
+          <i data-lucide="mail" class="w-6 h-6" target="_blank"></i>
+          E-mail
+        </a>
+      </nav>
+    </div>
+  </section>
 
-    <!-- Seção sobre mim -->
-    <section id="about" class="section py-20 bg-gray-100 dark:bg-gray-900">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-8 text-center font-space-mono left">Sobre mim</h2>
-            <div
-                class="flex flex-col md:flex-row items-center md:items-start justify-center space-y-8 md:space-y-0 md:space-x-12">
-                <div class="squircle bg-gray-300 dark:bg-gray-700 flex-shrink-0">
-                    <img src="./imgs/perfil.jpg" alt="Vinicius Silvestre criança segurando uma guitarra"
-                        class="w-full h-full object-cover" />
-                </div>
-                <div class="max-w-2xl text-center md:text-center">
-                    <p class="about-text font-space-mono">
-                        Olá! 👋 Me chamo Vinicius Silvestre, sou estudante de desenvolvimento e design UX/UI. Estou em
-                        formação no curso de <u><a class="fatec-hover"
-                                href="https://fatecrl.edu.br/cursos/sistemas-para-internet"
-                                alt="Link para o curso de Sistemas para Internet esse link abrirá em outra guia"
-                                target="_blank">Sistemas para a
-                                Internet</a></u> na
-                        <u><a class="fatec-hover" href="https://www.fatecrl.edu.br/"
-                                alt="Link para o site da faculdade esse link abrirá em outra guia" target="_blank">FATEC
-                                Rubens Lara
-                            </a>.</u>
-                        Também tenho interesse grande na área de redes e segurança digital e conclui diversos cursos da
-                        Cisco. Tenho certificações em HTML, CSS, JavaScript e React pela Origamid Cursos.
-                    </p>
-                    <br>
-                    <p class="about-text font-space-mono">
-                        Sou apaixonado por arte no geral, faço músicas autorais e amo cinema,
-                        um prazer te receber aqui!
-                    </p>
-                    <br>
-                    <p class="about-text interests-container">
-                        <span><span class="font-bold">Interesses: </span> Música, Cinemas & História em
-                            Quadrinhos</span>
-                    </p>
-                </div>
-            </div>
+  <!-- Skills Section -->
+  <section id="skills" class="section py-16">
+    <div class="container mx-auto px-8 sm:px-16">
+      <h2 class="text-3xl font-bold mb-16 text-center font-space-mono">
+        Meus conhecimentos
+      </h2>
+      <div
+        class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-12 place-items-center"
+      >
+        <div class="techlabel" data-text="Figma">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-plain.svg"
+            class="tech-icon figma tech-dark"
+            title="Figma"
+            alt="Figma"
+          />
         </div>
-    </section>
-    <section id="links" class="section py-16">
-        <div class="container mx-auto px-16">
-            <nav class="nav-container">
-                <a href="https://github.com/ViniciusSilvestr3"
-                    class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold" target="_blank">
-                    <i data-lucide="github" class="w-6 h-6"></i>
-                    Github
-                </a>
-                <a href="https://www.linkedin.com/in/vinicius-silvestre-a737a9239/"
-                    class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold" target="_blank">
-                    <i data-lucide="linkedin" class="w-6 h-6"></i>
-                    LinkedIn
-                </a>
-                <a href="https://www.instagram.com/vinicius.silver98/"
-                    class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">
-                    <i data-lucide="instagram" class="w-6 h-6" target="_blank"></i>
-                    Instagram
-                </a>
-                <a href="mailto:viniciusilvestre98@gmail.com"
-                    class="nav-link text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-bold">
-                    <i data-lucide="mail" class="w-6 h-6" target="_blank"></i>
-                    E-mail
-                </a>
-            </nav>
+        <div class="techlabel" data-text="HTML5">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain.svg"
+            class="tech-icon"
+            title="HTML5"
+            alt="HTML5"
+          />
         </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="section py-16">
-        <div class="container mx-auto px-8 sm:px-16">
-            <h2 class="text-3xl font-bold mb-16 text-center font-space-mono">Meus conhecimentos </h2>
-            <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-12 place-items-center">
-                <div class="techlabel" data-text="Figma">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-plain.svg"
-                        class="tech-icon figma tech-dark" title="Figma" alt="Figma" />
-                </div>
-                <div class="techlabel" data-text="HTML5">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain.svg"
-                        class="tech-icon" title="HTML5" alt="HTML5" />
-                </div>
-                <div class="techlabel" data-text="CSS3">
-
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-plain.svg"
-                        class="tech-icon" title="CSS3" alt="CSS3" />
-                </div>
-                <div class="techlabel" data-text="C++">
-
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-plain.svg"
-                        class="tech-icon" title="C++" alt="C++" />
-                </div>
-                <div class="techlabel" data-text="Photoshop">
-
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-plain.svg"
-                        class="tech-icon" title="Photoshop" alt="Photoshop" />
-                </div>
-                <div class="techlabel" data-text="React">
-
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
-                        class="tech-icon" title="React" alt="React" />
-                </div>
-                <div class="techlabel" data-text="JavaScript">
-
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg"
-                        class="tech-icon" title="JavaScript" alt="JavaScript" />
-                </div>
-                <div class="techlabel" data-text="Linux">
-
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-plain.svg"
-                        class="tech-icon tech-dark" title="Linux" alt="Linux" />
-                </div>
-                <div class="techlabel" data-text="Bash">
-
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-plain.svg"
-                        class="tech-icon" title="Bash" alt="Bash" />
-                </div>
-                <div class="techlabel" data-text="Postgresql">
-
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-plain.svg"
-                        class="tech-icon" title="Postgresql" alt="Postgresql" />
-                </div>
-                <div class="techlabel" data-text="TailWind">
-
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
-                        class="tech-icon" title="TailWind" alt="Tailwind" />
-                </div>
-                <div class="techlabel" data-text="NextJs">
-
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-plain.svg"
-                        class="tech-icon" title="NextJs" alt="NextJs" />
-                </div>
-            </div>
-    </section>
-
-    <!-- Navigation Links Section -->
-
-
-    <!-- Seção de Projetos -->
-    <section id="projects" class="section py-20 bg-gray-100 dark:bg-gray-900">
-        <div class="container mx-auto px-4 max-w-6xl projects-container">
-            <h2 class="text-3xl font-bold mb-12 text-center font-space-mono">Projetos</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Projetos serão adicionados automaticamente -->
-            </div>
+        <div class="techlabel" data-text="CSS3">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-plain.svg"
+            class="tech-icon"
+            title="CSS3"
+            alt="CSS3"
+          />
         </div>
-    </section>
+        <div class="techlabel" data-text="C++">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-plain.svg"
+            class="tech-icon"
+            title="C++"
+            alt="C++"
+          />
+        </div>
+        <div class="techlabel" data-text="Photoshop">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-plain.svg"
+            class="tech-icon"
+            title="Photoshop"
+            alt="Photoshop"
+          />
+        </div>
+        <div class="techlabel" data-text="React">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+            class="tech-icon"
+            title="React"
+            alt="React"
+          />
+        </div>
+        <div class="techlabel" data-text="JavaScript">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg"
+            class="tech-icon"
+            title="JavaScript"
+            alt="JavaScript"
+          />
+        </div>
+        <div class="techlabel" data-text="Linux">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-plain.svg"
+            class="tech-icon tech-dark"
+            title="Linux"
+            alt="Linux"
+          />
+        </div>
+        <div class="techlabel" data-text="Bash">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-plain.svg"
+            class="tech-icon"
+            title="Bash"
+            alt="Bash"
+          />
+        </div>
+        <div class="techlabel" data-text="Postgresql">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-plain.svg"
+            class="tech-icon"
+            title="Postgresql"
+            alt="Postgresql"
+          />
+        </div>
+        <div class="techlabel" data-text="TailWind">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
+            class="tech-icon"
+            title="TailWind"
+            alt="Tailwind"
+          />
+        </div>
+        <div class="techlabel" data-text="NextJs">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-plain.svg"
+            class="tech-icon tech-dark"
+            title="NextJs"
+            alt="NextJs"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- Navigation Links Section -->
+
+  <!-- Seção de Projetos -->
+  <section id="projects" class="section py-20 bg-gray-100 dark:bg-gray-900">
+    <div class="container mx-auto px-4 max-w-6xl projects-container">
+      <h2 class="text-3xl font-bold mb-12 text-center font-space-mono">
+        Projetos
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Projetos serão adicionados automaticamente -->
+      </div>
+    </div>
+  </section>
 </main>
-<footer class="w-full py-4 border-t border-gray-300 dark:border-gray-700 footer-text text-center">
-    <a class="text-center font-space-mono text-sm uppercase cursor-pointer "
-        href="https://www.youtube.com/watch?v=tN-9bfbCAAc&ab_channel=TOMITO">
-        Melhor OST dos jogos.
-    </a>
+<footer
+  class="w-full py-4 border-t border-gray-300 dark:border-gray-700 footer-text text-center"
+>
+  <a
+    class="text-center font-space-mono text-sm uppercase cursor-pointer"
+    href="https://www.youtube.com/watch?v=tN-9bfbCAAc&ab_channel=TOMITO"
+  >
+    Melhor OST dos jogos.
+  </a>
 </footer>
 <script>
-    tailwind.config = {
-        darkMode: 'class',
-        theme: {
-            extend: {
-                colors: {
-                    dark: "#0a0a0a",
-                    light: "#fcfbf7",
-                },
-            },
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          dark: "#0a0a0a",
+          light: "#fcfbf7",
         },
-    }
+      },
+    },
+  };
 </script>
-</head>
 
 <body
-    class="bg-light dark:bg-dark text-dark dark:text-white min-h-screen flex flex-col font-['Inter'] transition-colors duration-300">
-    <script>
-        lucide.createIcons();
+  class="bg-light dark:bg-dark text-dark dark:text-white min-h-screen flex flex-col font-['Inter'] transition-colors duration-300"
+>
+  <script>
+    lucide.createIcons();
 
-        // Scroll reveal effect
-        function revealSections() {
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => {
-                const sectionTop = section.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                if (sectionTop < windowHeight * 0.75) {
-                    section.classList.add('visible');
-                }
-            });
+    // Scroll reveal effect
+    function revealSections() {
+      const sections = document.querySelectorAll(".section");
+      sections.forEach((section) => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (sectionTop < windowHeight * 0.75) {
+          section.classList.add("visible");
         }
+      });
+    }
 
-        window.addEventListener('scroll', revealSections);
-        window.addEventListener('load', revealSections);
+    window.addEventListener("scroll", revealSections);
+    window.addEventListener("load", revealSections);
 
-        const themeToggle = document.getElementById('themeToggle');
-        const html = document.documentElement;
+    const themeToggle = document.getElementById("themeToggle");
+    const html = document.documentElement;
 
-        // Function to set the theme
-        function setTheme(isDark) {
-            if (isDark) {
-                html.classList.add('dark');
-            } else {
-                html.classList.remove('dark');
-            }
-            updateIcon(isDark);
-            localStorage.setItem('darkMode', isDark);
+    // Function to set the theme
+    function setTheme(isDark) {
+      if (isDark) {
+        html.classList.add("dark");
+      } else {
+        html.classList.remove("dark");
+      }
+      updateIcon(isDark);
+      localStorage.setItem("darkMode", isDark);
+    }
+
+    // Function to update the icon
+    function updateIcon(isDark) {
+      themeToggle.innerHTML = isDark
+        ? '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>'
+        : '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>';
+    }
+
+    // Function to get system preference
+    function getSystemPreference() {
+      return (
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      );
+    }
+
+    // Function to set initial theme
+    function setInitialTheme() {
+      const savedTheme = localStorage.getItem("darkMode");
+      if (savedTheme !== null) {
+        setTheme(JSON.parse(savedTheme));
+      } else {
+        setTheme(getSystemPreference());
+      }
+    }
+
+    // Toggle theme when button is clicked
+    themeToggle.addEventListener("click", () => {
+      const isDark = !html.classList.contains("dark");
+      setTheme(isDark);
+    });
+
+    // Listen for system preference changes
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        if (localStorage.getItem("darkMode") === null) {
+          setTheme(e.matches);
         }
+      });
 
-        // Function to update the icon
-        function updateIcon(isDark) {
-            themeToggle.innerHTML = isDark
-                ? '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>'
-                : '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>';
-        }
+    // Set initial theme
+    setInitialTheme();
 
-        // Function to get system preference
-        function getSystemPreference() {
-            return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        }
-
-        // Function to set initial theme
-        function setInitialTheme() {
-            const savedTheme = localStorage.getItem('darkMode');
-            if (savedTheme !== null) {
-                setTheme(JSON.parse(savedTheme));
-            } else {
-                setTheme(getSystemPreference());
-            }
-        }
-
-        // Toggle theme when button is clicked
-        themeToggle.addEventListener('click', () => {
-            const isDark = !html.classList.contains('dark');
-            setTheme(isDark);
+    document.addEventListener("DOMContentLoaded", function () {
+      const rdkElements = document.querySelectorAll(".rdk-hover");
+      rdkElements.forEach((element) => {
+        element.addEventListener("click", function () {
+          if (this.textContent === "RDK-B") {
+            window.open(
+              "https://wiki.rdkcentral.com/display/RDK/RDK-Broadband",
+              "_blank"
+            );
+          } else if (this.textContent === "RDK") {
+            window.open(
+              "https://en.wikipedia.org/wiki/Reference_Design_Kit",
+              "_blank"
+            );
+          }
         });
+      });
+    });
 
-        // Listen for system preference changes
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-            if (localStorage.getItem('darkMode') === null) {
-                setTheme(e.matches);
-            }
-        });
+    // Project data
+    const projects = [
+      {
+        title: "Bikcraft",
+        description:
+          "Esse projeto foi um estudo de design feito com CSS e HTML. Tentando sempre priozar a facilidade do usuário na navegação do site.",
+        url: "https://github.com/ViniciusSilvestr3/bikcraft",
+        image:
+          "https://opengraph.githubassets.com/1/ViniciusSilvestr3/bikcraft",
+      },
+      {
+        title: "Spotify Clone",
+        description:
+          "Desenvolvimento de uma UI semelhante ao Spotify com player de música.",
+        url: "https://github.com/ViniciusSilvestr3/SilversFy",
+        image:
+          "https://opengraph.githubassets.com/1/ViniciusSilvestr3/SilversFy",
+      },
+      {
+        title: "Website para Animais",
+        description:
+          "Estudo complementar de JavaScript com ênfase nas funcionalidades visuais do Site.",
+        url: "https://github.com/ViniciusSilvestr3/Animais-Origamid",
+        image:
+          "https://opengraph.githubassets.com/1/ViniciusSilvestr3/Animais-Origamid",
+      },
+      {
+        title: "PazzetiScript",
+        description: "Está em desenvolvimento em colaboração.",
+        url: "https://github.com/ViniciusSilvestr3/PazettiScript",
+        image:
+          "https://opengraph.githubassets.com/1/ViniciusSilvestr3/PazettiScript",
+      },
+    ];
 
-        // Set initial theme
-        setInitialTheme();
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const rdkElements = document.querySelectorAll('.rdk-hover');
-            rdkElements.forEach(element => {
-                element.addEventListener('click', function () {
-                    if (this.textContent === 'RDK-B') {
-                        window.open('https://wiki.rdkcentral.com/display/RDK/RDK-Broadband', '_blank');
-                    } else if (this.textContent === 'RDK') {
-                        window.open('https://en.wikipedia.org/wiki/Reference_Design_Kit', '_blank');
-                    }
-                });
-            });
-        });
-
-        // Project data
-        const projects = [
-            {
-                title: "Bikcraft",
-                description: "Esse projeto foi um estudo de design feito com CSS e HTML. Tentando sempre priozar a facilidade do usuário na navegação do site.",
-                url: "https://github.com/ViniciusSilvestr3/bikcraft",
-                image: "https://opengraph.githubassets.com/1/ViniciusSilvestr3/bikcraft"
-            },
-            {
-                title: "Spotify Clone",
-                description: "Desenvolvimento de uma UI semelhante ao Spotify com player de música.",
-                url: "https://github.com/ViniciusSilvestr3/SilversFy",
-                image: "https://opengraph.githubassets.com/1/ViniciusSilvestr3/SilversFy"
-            },
-            {
-                title: "Website para Animais",
-                description: "Estudo complementar de JavaScript com ênfase nas funcionalidades visuais do Site.",
-                url: "https://github.com/ViniciusSilvestr3/Animais-Origamid",
-                image: "https://opengraph.githubassets.com/1/ViniciusSilvestr3/Animais-Origamid"
-            },
-            {
-                title: "PazzetiScript",
-                description: "Está em desenvolvimento em colaboração.",
-                url: "https://github.com/ViniciusSilvestr3/PazettiScript",
-                image: "https://opengraph.githubassets.com/1/ViniciusSilvestr3/PazettiScript"
-            }
-
-        ];
-
-        // Function to create project tiles
-        function createProjectTiles() {
-            const projectsContainer = document.querySelector('#projects .grid');
-            projects.forEach(project => {
-                const tile = document.createElement('div');
-                tile.className = 'project-tile';
-                tile.innerHTML = `
+    // Function to create project tiles
+    function createProjectTiles() {
+      const projectsContainer = document.querySelector("#projects .grid");
+      projects.forEach((project) => {
+        const tile = document.createElement("div");
+        tile.className = "project-tile";
+        tile.innerHTML = `
                     <div class="project-thumbnail mb-4">
                         <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover">
                         <div class="redirect-icon">
@@ -689,25 +799,25 @@
                         </a>
                     </div>
                 `;
-                const thumbnail = tile.querySelector('.project-thumbnail');
-                thumbnail.addEventListener('click', () => window.open(project.url, '_blank'));
-                projectsContainer.appendChild(tile);
-            });
-            lucide.createIcons();
-        }
+        const thumbnail = tile.querySelector(".project-thumbnail");
+        thumbnail.addEventListener("click", () =>
+          window.open(project.url, "_blank")
+        );
+        projectsContainer.appendChild(tile);
+      });
+      lucide.createIcons();
+    }
 
-        // Call the function to create project tiles
-        createProjectTiles();
-        const title = document.getElementById('glowText');
+    // Call the function to create project tiles
+    createProjectTiles();
+    const title = document.getElementById("glowText");
 
-        title.addEventListener('mouseenter', () => {
-            title.classList.add('glow-on');
-        });
+    title.addEventListener("mouseenter", () => {
+      title.classList.add("glow-on");
+    });
 
-        title.addEventListener('mouseleave', () => {
-            title.classList.remove('glow-on');
-        });
-
-
-    </script>
+    title.addEventListener("mouseleave", () => {
+      title.classList.remove("glow-on");
+    });
+  </script>
 </body>
