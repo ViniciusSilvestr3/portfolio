@@ -68,41 +68,6 @@ Portfolio/
     └── perfil.jpg     # Foto de perfil
 ```
 
-## 🚀 Como Executar
-
-1. **Clone o repositório**
-
-   ```bash
-   git clone https://github.com/ViniciusSilvestr3/Portfolio.git
-   ```
-
-2. **Navegue até o diretório**
-
-   ```bash
-   cd Portfolio
-   ```
-
-3. **Abra o arquivo index.html**
-   - Duplo clique no arquivo `index.html`
-   - Ou abra com um servidor local (recomendado)
-
-### 🌐 Servidor Local (Opcional)
-
-Para uma melhor experiência de desenvolvimento, use um servidor local:
-
-```bash
-# Com Python
-python -m http.server 8000
-
-# Com Node.js (http-server)
-npx http-server
-
-# Com PHP
-php -S localhost:8000
-```
-
-Depois acesse `http://localhost:8000`
-
 ## ⚙️ Funcionalidades Técnicas
 
 ### Tema Escuro/Claro
@@ -137,31 +102,12 @@ O portfólio é totalmente responsivo com breakpoints otimizados:
 - **Tablet**: 640px - 1024px
 - **Desktop**: > 1024px
 
-## 🔧 Personalização
-
-Para personalizar o portfólio:
-
-1. **Informações Pessoais**: Edite as seções no HTML
-2. **Projetos**: Modifique o array `projects` no JavaScript
-3. **Cores**: Ajuste as cores no Tailwind config
-4. **Fontes**: Altere as importações do Google Fonts
-
 ## 📈 Performance
 
 - ✅ Imagens otimizadas
 - ✅ CSS e JS minificados em produção
 - ✅ Carregamento assíncrono de recursos
 - ✅ Animações com GPU acceleration
-
-## 🤝 Contribuição
-
-Contribuições são bem-vindas! Sinta-se à vontade para:
-
-1. Fazer um fork do projeto
-2. Criar uma branch para sua feature (`git checkout -b feature/nova-feature`)
-3. Commit suas mudanças (`git commit -m 'Adiciona nova feature'`)
-4. Push para a branch (`git push origin feature/nova-feature`)
-5. Abrir um Pull Request
 
 ## 📝 Licença
 
